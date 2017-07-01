@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid well total-form">
+    {% for i in range(12) %}
+    <form class="form-inline">
+      <div id="class-name" class="form-group">
+        <label for="className1">Class Name</label>
+        <input type="text" class="form-control" id="className1" placeholder="ENGL 101"/>
+      </div>
+      <div class="form-group">
+        <label for="secNum1">Section Number</label>
+        <input type="text" class="form-control" id="secNum1" placeholder="199"/>
+      </div>
+      <div class="form-group">
+        <label for="startTime1">Start</label>
+        <input type="time" class="form-control" id="startTime1"/>
+      </div><!-- /start time -->
+      <div class="form-group">
+        <label for="endTime1">End</label>
+        <input type="time" class="form-control" id="endTime1"/>
+      </div><!-- /start time -->
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="M">
+          M
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="T">
+          T
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="W">
+          W
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="R">
+          R
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="F">
+          F
+        </label>
+      </div>
+    </form>
+  {% endfor %}
+  </div>
+
+
+{% endblock %}
