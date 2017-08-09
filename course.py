@@ -19,7 +19,7 @@ class Course:
         self.str_section_list.append(str(section))
 
     def getSections(self):
-    	return self.section_list
+        return self.section_list
 
     def getStrSections(self):
         return self.str_section_list

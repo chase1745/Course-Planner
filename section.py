@@ -69,14 +69,14 @@ class Section(Course):
         if sameDay:
             if not self ^ other:  # Both in morning or afternoon
                 if not self < other and not self > other:
-                    print(self.secInfo, '~', other.secInfo)
+                    # print(self.secInfo, '~', other.secInfo)
                     return True
                 else:
-                    print(self.secInfo, '=', other.secInfo)
+                    # print(self.secInfo, '=', other.secInfo)
                     return False
             else:  # Cannot interfere because only one of them is in the morning
-                print(self.secInfo, '=', other.secInfo)
+                # print(self.secInfo, '=', other.secInfo)
                 return False
         else:
-            print(self.secInfo, '=', other.secInfo)
+            # print(self.secInfo, '=', other.secInfo)
             return False

@@ -1,16 +1,15 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
-from datetime import time
 from collections import defaultdict
 
 from course import Course
 from section import Section
-from datetime import time
 from itertools import product
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-app.config['SECRET_KEY'] = "Barrett12"
+app.config['SECRET_KEY'] = 'keysss'
+
 
 @app.route('/')
 def input():
@@ -36,7 +35,14 @@ def output():
         c = Course(departments[i], courseNums[i])
         course_list.append(c)
         for sections in range(int(num_secs)): 
-            s = Section(c.department, c.courseNum, secNums[sections+i], startTimes[sections+i], finishTimes[sections+i], days[sections+i])
+            s = Section(c.department,
+                        c.courseNum,
+                        secNums[sections+i],
+                        startTimes[sections+i],
+                        finishTimes[sections+i],
+                        days[sections+i]
+                        )
+
             c.addSection(s)
         i += 1
 
@@ -52,6 +58,7 @@ def output():
             print(section.secInfo)
 
     return render_template('output.html')
+
 
 def get_days(f):
     M = f.getlist('m')
@@ -71,26 +78,28 @@ def get_days(f):
                 if day is R: day_name = "R"
                 if day is FR: day_name = "F"
                 days[i] += day_name
-            i+=1
+            i += 1
     return days
+
 
 def generate_schedules(section_list):
     scheduleList = []
     schedulePossible = True
 
-    for schedule in product(*(section_list)):
+    for schedule in product(*section_list):
         for sec in schedule:
-            if not schedulePossible: 
+            if not schedulePossible:
                 break
             for sec2 in schedule:
-                if sec != sec2 and sec.interfere(sec2):
+                if sec is not sec2 and sec.interfere(sec2):
                     schedulePossible = False
         if schedulePossible:
             scheduleList.append(schedule)
-        else: 
+        else:
             schedulePossible = True
 
-    return scheduleList 
+    return scheduleList
+
 
 app.run(debug=True)
 
