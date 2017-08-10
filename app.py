@@ -30,25 +30,30 @@ def output():
     print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
 
     course_list = []
-    i = 0
+    section = 0
+    course = 0
     for num_secs in secs:
-        c = Course(departments[i], courseNums[i])
+        c = Course(departments[course], courseNums[course])
         course_list.append(c)
-        for sections in range(int(num_secs)): 
+        for sections in range(int(num_secs)):
             s = Section(c.department,
                         c.courseNum,
-                        secNums[sections+i],
-                        startTimes[sections+i],
-                        finishTimes[sections+i],
-                        days[sections+i]
+                        secNums[section],
+                        startTimes[section],
+                        finishTimes[section],
+                        days[section]
                         )
 
             c.addSection(s)
-        i += 1
+            section += 1
+        course += 1
 
     section_list = [courses.getSections() for courses in course_list]
+    for l in section_list:
+        for sec in l:
+            print(sec.secInfo)
     scheduleList = generate_schedules(section_list)
-    print(len(scheduleList))
+    print("NUMBER OF SCHEDULES:", len(scheduleList))
 
     i = 1
     for schedule in scheduleList:
