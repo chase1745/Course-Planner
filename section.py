@@ -24,9 +24,9 @@ class Section(Course):
             if day:
                 self.strDays += day
 
-        hour = re.compile( r'\d\d?(?=:)')
-        minute = re.compile( r'(?<=:)\d\d')
-        am_or_pm = re.compile( r'am|pm|AM|PM')
+        hour = re.compile(r'\d\d?(?=:)')
+        minute = re.compile(r'(?<=:)\d\d')
+        am_or_pm = re.compile(r'am|pm|AM|PM')
         self.timeStart = time(int(hour.search(timeStart).group()), int(minute.search(timeStart).group()))
         self.timeFinish = time(int(hour.search(timeFinish).group()), int(minute.search(timeFinish).group()))
         if am_or_pm.search(timeStart).group() == "pm" or am_or_pm.search(timeStart).group() == "PM":
