@@ -53,7 +53,8 @@ $(document).ready(function() {
     var maxSections = 8;
     $('body').on('click', '.btn-add-sec', function(e) {
         e.preventDefault();
-        var num_sections = parseInt($(this).prevAll(".course-info").find(".num-sections").val()) + 1;
+        var num_sections = parseInt($(this).prevAll(".course-info").find(".num-sections").val());
+        num_sections++;
         if (num_sections <= maxSections) {
             $("#sec-template").clone().insertBefore($(this)).removeAttr('id').show();
             $(this).prevAll(".course-info").find(".num-sections").val(num_sections);
