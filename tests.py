@@ -43,12 +43,13 @@ def main():
 
     course4 = Course("MATH", "304")
     sec8 = Section("MATH", "304", "502", "9:10am", "9:50am", "MWF")
-    section_list = [sec8]
+    sec9 = Section ("MATH", "304", "888", "2:00pm", "3:00pm", "TR")
+    section_list = [sec8, sec9]
     [course4.addSection(sec) for sec in section_list]
 
     course5 = Course("ENGL", "204")
-    sec9 = Section("ENGL", "204", "999", "8:10am", "8:50am", "MWF")
-    section_list = [sec9]
+    sec10 = Section("ENGL", "204", "999", "8:10am", "8:50am", "MWF")
+    section_list = [sec10]
     [course5.addSection(sec) for sec in section_list]
 
     course_list = [course1, course2, course3, course4, course5]
