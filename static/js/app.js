@@ -1,10 +1,11 @@
 $(document).ready(function() {
-    var timeStart = $(".start-time");
+    var timeStart = $(".start-time");    
     var timeFinish = $(".finish-time");
 
     //////////////////////////
     //   Timepicker funcs.  //
     //////////////////////////
+
     timeStart.each( function(){
         $(this).timepicker({
             'minTime': '7:00am',
@@ -83,5 +84,8 @@ $(document).ready(function() {
             $(this).next(".max-reached").remove();
             $(this).after("<p class='max-reached'>Maximum of 8 courses.</p>");
         }
+
     });
+
+
 });

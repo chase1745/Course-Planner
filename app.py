@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 
 from collections import defaultdict
 
@@ -62,7 +62,7 @@ def output():
         for section in list(schedule):
             print(section.secInfo)
 
-    return render_template('output.html', numSchedules=len(scheduleList))
+    return render_template('output.html')
 
 
 def get_days(f):
@@ -76,7 +76,6 @@ def get_days(f):
     for day in days_html:
         i = 0
         for sec in day:
-            day_name = ""
             if sec == "1":
                 if day is M: day_name = "M"
                 if day is T: day_name = "T"
