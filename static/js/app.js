@@ -65,7 +65,7 @@ $(document).ready(function() {
     });
     
     //////////////////////////
-    //    Adding Courses   //
+    //    Adding Courses    //
     //////////////////////////
     var numCourses = 3;  // start out with 3
     var wrapper     = $('#course-template');
@@ -85,6 +85,14 @@ $(document).ready(function() {
             $(this).after("<p class='max-reached'>Maximum of 8 courses.</p>");
         }
 
+    });
+
+    //////////////////////////
+    //         OUTPUT       //
+    //////////////////////////
+    $('.box').click(function() {
+        $('.arrow_box').each( function() {$(this).removeClass('selected');});
+        $(this).children().addClass('selected');
     });
 
 

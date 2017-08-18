@@ -16,51 +16,51 @@ def input():
     return render_template('input.html')
 
 
-@app.route('/output', methods = ['POST'])
+@app.route('/output', methods =['POST', 'GET'])
 def output():
-    f = request.form
-    departments = f.getlist('department')
-    courseNums = f.getlist('courseNum')
-    secNums = f.getlist('secNum')
-    startTimes = f.getlist('startTime')
-    finishTimes = f.getlist('finishTime')
-    days = get_days(f)
-    secs = f.getlist('sec-indicator')
-
-    print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
-
-    course_list = []
-    section = 0
-    course = 0
-    for num_secs in secs:
-        c = Course(departments[course], courseNums[course])
-        course_list.append(c)
-        for sections in range(int(num_secs)):
-            s = Section(c.department,
-                        c.courseNum,
-                        secNums[section],
-                        startTimes[section],
-                        finishTimes[section],
-                        days[section]
-                        )
-
-            c.addSection(s)
-            section += 1
-        course += 1
-
-    section_list = [courses.getSections() for courses in course_list]
-    for l in section_list:
-        for sec in l:
-            print(sec.secInfo)
-    scheduleList = generate_schedules(section_list)
-    print("NUMBER OF SCHEDULES:", len(scheduleList))
-
-    i = 1
-    for schedule in scheduleList:
-        print("Schedule" + str(i) + ":")
-        i += 1
-        for section in list(schedule):
-            print(section.secInfo)
+    # f = request.form
+    # departments = f.getlist('department')
+    # courseNums = f.getlist('courseNum')
+    # secNums = f.getlist('secNum')
+    # startTimes = f.getlist('startTime')
+    # finishTimes = f.getlist('finishTime')
+    # days = get_days(f)
+    # secs = f.getlist('sec-indicator')
+    #
+    # print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
+    #
+    # course_list = []
+    # section = 0
+    # course = 0
+    # for num_secs in secs:
+    #     c = Course(departments[course], courseNums[course])
+    #     course_list.append(c)
+    #     for sections in range(int(num_secs)):
+    #         s = Section(c.department,
+    #                     c.courseNum,
+    #                     secNums[section],
+    #                     startTimes[section],
+    #                     finishTimes[section],
+    #                     days[section]
+    #                     )
+    #
+    #         c.addSection(s)
+    #         section += 1
+    #     course += 1
+    #
+    # section_list = [courses.getSections() for courses in course_list]
+    # for l in section_list:
+    #     for sec in l:
+    #         print(sec.secInfo)
+    # scheduleList = generate_schedules(section_list)
+    # print("NUMBER OF SCHEDULES:", len(scheduleList))
+    #
+    # i = 1
+    # for schedule in scheduleList:
+    #     print("Schedule" + str(i) + ":")
+    #     i += 1
+    #     for section in list(schedule):
+    #         print(section.secInfo)
 
     return render_template('output.html')
 
