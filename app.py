@@ -18,51 +18,79 @@ def input():
 
 @app.route('/output', methods =['POST', 'GET'])
 def output():
-    # f = request.form
-    # departments = f.getlist('department')
-    # courseNums = f.getlist('courseNum')
-    # secNums = f.getlist('secNum')
-    # startTimes = f.getlist('startTime')
-    # finishTimes = f.getlist('finishTime')
-    # days = get_days(f)
-    # secs = f.getlist('sec-indicator')
-    #
-    # print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
-    #
-    # course_list = []
-    # section = 0
-    # course = 0
-    # for num_secs in secs:
-    #     c = Course(departments[course], courseNums[course])
-    #     course_list.append(c)
-    #     for sections in range(int(num_secs)):
-    #         s = Section(c.department,
-    #                     c.courseNum,
-    #                     secNums[section],
-    #                     startTimes[section],
-    #                     finishTimes[section],
-    #                     days[section]
-    #                     )
-    #
-    #         c.addSection(s)
-    #         section += 1
-    #     course += 1
-    #
-    # section_list = [courses.getSections() for courses in course_list]
-    # for l in section_list:
-    #     for sec in l:
-    #         print(sec.secInfo)
-    # scheduleList = generate_schedules(section_list)
-    # print("NUMBER OF SCHEDULES:", len(scheduleList))
-    #
-    # i = 1
-    # for schedule in scheduleList:
-    #     print("Schedule" + str(i) + ":")
-    #     i += 1
-    #     for section in list(schedule):
-    #         print(section.secInfo)
+    f = request.form
+    departments = f.getlist('department')
+    courseNums = f.getlist('courseNum')
+    secNums = f.getlist('secNum')
+    startTimes = f.getlist('startTime')
+    finishTimes = f.getlist('finishTime')
+    days = get_days(f)
+    secs = f.getlist('sec-indicator')
 
-    return render_template('output.html')
+    print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
+
+    # Remove blank inputs
+    section = 0
+    course = 0
+    coursesToDelete = []
+    sectionsToDelete = []
+    for num_secs in secs:
+        if departments[course] == '' and courseNums[course] == '':
+            coursesToDelete.append(course)
+            for sections in range(int(num_secs)):
+                sectionsToDelete.append(section)
+                section += 1
+            course += 1
+        else:
+            for sections in range(int(num_secs)):
+                section += 1
+            course += 1
+    for c in reversed(coursesToDelete):
+        del departments[c]
+        del courseNums[c]
+    for s in reversed(sectionsToDelete):
+        del secNums[s]
+        del startTimes[s]
+        del finishTimes[s]
+        del secs[s]
+
+    # Create sections
+    course_list = []
+    section = 0
+    course = 0
+    for num_secs in secs:
+        c = Course(departments[course], courseNums[course])
+        course_list.append(c)
+        for sections in range(int(num_secs)):
+            s = Section(c.department,
+                        c.courseNum,
+                        secNums[section],
+                        startTimes[section],
+                        finishTimes[section],
+                        days[section]
+                        )
+
+            c.addSection(s)
+            section += 1
+        course += 1
+
+    # Find all possible schedules
+    section_list = [courses.getSections() for courses in course_list]
+    for l in section_list:
+        for sec in l:
+            print(sec.secInfo)
+    scheduleList = generate_schedules(section_list)
+    print("NUMBER OF SCHEDULES:", len(scheduleList))
+
+    # Print schedules
+    i = 1
+    for schedule in scheduleList:
+        print("Schedule" + str(i) + ":")
+        i += 1
+        for section in list(schedule):
+            print(section.secInfo)
+
+    return render_template('output.html', scheduleList=scheduleList)
 
 
 def get_days(f):
