@@ -1,18 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
 
-{#<p>Number of schedules: {{ numSchedules }}<p>#}
+<p>Number of schedules: {{ scheduleList|length }}</p>
+{% for schedule in scheduleList %}
+    <a href="#" class="box">
+        <div class="arrow_box">
+            <h1>{{loop.index}}</h1>
+        </div>
+    </a>
+{% endfor %}
 
-<a href="#" class="box">
-    <div class="arrow_box">
-        <h1>1</h1>
-    </div>
-</a>
-<a href="#" class="box">
-    <div class="arrow_box">
-        <h1>2</h1>
-    </div>
-</a>
 
 
 
