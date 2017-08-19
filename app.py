@@ -27,13 +27,14 @@ def output():
     days = get_days(f)
     secs = f.getlist('sec-indicator')
 
-    print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
+    # print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
 
     # Remove blank inputs
     section = 0
     course = 0
     coursesToDelete = []
     sectionsToDelete = []
+    # Remove blank courses
     for num_secs in secs:
         if departments[course] == '' and courseNums[course] == '':
             coursesToDelete.append(course)
@@ -45,14 +46,42 @@ def output():
             for sections in range(int(num_secs)):
                 section += 1
             course += 1
+    print(coursesToDelete, sectionsToDelete)
     for c in reversed(coursesToDelete):
         del departments[c]
         del courseNums[c]
+        del secs[c]
     for s in reversed(sectionsToDelete):
         del secNums[s]
         del startTimes[s]
         del finishTimes[s]
-        del secs[s]
+    # print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
+
+    # Remove blank sections
+    s = 0
+    c = 0
+    blankSecNum = 1
+    sectionsToDelete = []
+    for num_secs in secs:
+        for sections in range(int(num_secs)):
+            if secNums[s] == '' and startTimes[s] == '' and finishTimes[s] == '' and s not in days:
+                # Completely blank section
+                sectionsToDelete.append((s, c))
+            elif startTimes[s] == '' or finishTimes[s] == '' or s not in days:
+                # Input ERROR
+                render_template('input.html')
+            elif secNums[s] == '':
+                # Insert number for section number if left blank
+                secNums[s] = blankSecNum
+                blankSecNum += 1
+            s += 1
+        c += 1
+    for s in reversed(sectionsToDelete):
+        del secNums[s[0]]
+        del startTimes[s[0]]
+        del finishTimes[s[0]]
+        secs[s[1]] = str(int(secs[s[1]]) - 1)
+    print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
 
     # Create sections
     course_list = []
