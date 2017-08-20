@@ -11,7 +11,7 @@ $(document).ready(function() {
             'minTime': '7:00am',
             'maxTime': '10:00pm',
             'timeFormat': 'g:ia',
-            'step': 15,
+            'step': 15
         });
     });
     timeFinish.each( function(){
@@ -77,7 +77,7 @@ $(document).ready(function() {
         if (numCourses < maxCourses) {
             numCourses++;
             $("#course-template").clone().removeAttr('id').insertAfter('.input-wrapper:last');
-            $(".input-wrapper:last label.course-count").html("Class "+numCourses);
+            $(".input-wrapper:last label.course-count").html("Class "+numCourses+":");
             $(".input-wrapper:last input[type=hidden]").attr('id', numCourses);
             $(".input-wrapper:last").show();
         } else {
