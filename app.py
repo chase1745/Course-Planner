@@ -130,7 +130,15 @@ def output():
         for section in list(schedule):
             print(section.secInfo)
 
-    return render_template('output.html', scheduleList=scheduleList)
+    # Prep data for user output
+    outputScheduleList = []
+    for schedule in scheduleList:
+        sections = []
+        for section in list(schedule):
+            sections.append(section.secInfo)
+        outputScheduleList.append(sections)
+
+    return render_template('output.html', scheduleList=outputScheduleList)
 
 
 def get_days(f):
@@ -165,6 +173,7 @@ def generate_schedules(section_list):
                 break
             for sec2 in schedule:
                 if sec is not sec2 and sec.interfere(sec2):
+                    print(sec, sec2, 'INTERFERE')
                     schedulePossible = False
         if schedulePossible:
             scheduleList.append(schedule)

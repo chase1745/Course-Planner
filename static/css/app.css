@@ -118,6 +118,7 @@
 .arrow_box {
     width: 200px;
     height: 100px;
+    /*display: inline-block;*/
 }
 .arrow_box {
 	position: relative;

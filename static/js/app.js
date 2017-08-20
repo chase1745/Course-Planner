@@ -86,8 +86,15 @@ $(document).ready(function() {
     //         OUTPUT       //
     //////////////////////////
     $('.box').click(function() {
-        $('.arrow_box').each( function() {$(this).removeClass('selected');});
+        $('.arrow_box').each( function() {
+            if ($(this).hasClass('selected')) {
+                $(this).parent().next().hide();
+            }
+            $(this).removeClass('selected');
+        });
         $(this).children().addClass('selected');
+        $(this).next().show();
+
     });
 });
 

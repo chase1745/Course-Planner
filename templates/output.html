@@ -2,12 +2,26 @@
 {% block content %}
 
 <p>Number of schedules: {{ scheduleList|length }}</p>
+
 {% for schedule in scheduleList %}
     <a href="#" class="box">
-        <div class="arrow_box">
-            <h1>{{loop.index}}</h1>
-        </div>
+        {% if loop.index == 1 %}
+            <div class="arrow_box selected">
+        {% else %}
+            <div class="arrow_box">
+        {% endif %}
+                <h1>{{loop.index}}</h1>
+            </div>
     </a>
+    {% if loop.index == 1 %}
+        <div class="schedule">
+    {% else %}
+        <div style="display: none" class="schedule">
+    {% endif %}
+            {% for section in schedule %}
+                <p>{{ section }}</p>
+            {% endfor %}
+        </div>
 {% endfor %}
 
 
