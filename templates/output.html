@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<p>Number of schedules: {{ scheduleList|length }}</p>
+<style>
+    body {
+        background: #BFBFBF;
+    }
+</style>
+
+
+{#<p>Number of schedules: {{ scheduleList|length }}</p>#}
 
 {% for schedule in scheduleList %}
+    <div class="row">
     <a href="#" class="box">
         {% if loop.index == 1 %}
             <div class="arrow_box selected">
@@ -22,7 +30,10 @@
                 <p>{{ section }}</p>
             {% endfor %}
         </div>
+    </div>
 {% endfor %}
+
+
 
 
 
