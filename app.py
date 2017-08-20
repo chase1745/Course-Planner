@@ -46,7 +46,7 @@ def output():
             for sections in range(int(num_secs)):
                 section += 1
             course += 1
-    print(coursesToDelete, sectionsToDelete)
+    # print(coursesToDelete, sectionsToDelete)
     for c in reversed(coursesToDelete):
         del departments[c]
         del courseNums[c]
@@ -69,18 +69,29 @@ def output():
                 sectionsToDelete.append((s, c))
             elif startTimes[s] == '' or finishTimes[s] == '' or s not in days:
                 # Input ERROR
-                render_template('input.html')
+                # render_template('input.html')
+                sectionsToDelete.append((s, c))
             elif secNums[s] == '':
                 # Insert number for section number if left blank
-                secNums[s] = blankSecNum
+                secNums[s] = str(blankSecNum)
                 blankSecNum += 1
             s += 1
         c += 1
     for s in reversed(sectionsToDelete):
+        # s[0] == section number, s[1] == course number
         del secNums[s[0]]
         del startTimes[s[0]]
         del finishTimes[s[0]]
         secs[s[1]] = str(int(secs[s[1]]) - 1)
+    coursesToDelete = []
+    i = 0
+    for s in secs:
+        print(s)
+        if s == '0': coursesToDelete.append(i)
+        i += 1
+    for c in reversed(coursesToDelete):
+        del secs[c]
+
     print(departments, courseNums, secNums, startTimes, finishTimes, days, secs)
 
     # Create sections
