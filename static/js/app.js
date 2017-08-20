@@ -63,6 +63,17 @@ $(document).ready(function() {
             $(this).after("<p class='max-reached'>Maximum of 8 sections per course.</p>");
         }
     });
+
+    //////////////////////////
+    //   Removing Sections  //
+    //////////////////////////
+    $('body').on('click', '.btn-delete-sec', function(e) {
+        e.preventDefault();
+        var num_sections = parseInt($(this).parent().siblings(".course-info").find(".num-sections").val());
+        num_sections--;
+        $(this).parent().siblings(".course-info").find(".num-sections").val(num_sections);
+        $(this).parents('.sec-info').remove();
+    });
     
     //////////////////////////
     //    Adding Courses    //
@@ -71,7 +82,6 @@ $(document).ready(function() {
     var wrapper     = $('#course-template');
     var add_button  = $('.btn-add-course');
     var maxCourses = 8; // TODO: change
-
     $(add_button).click(function(e) {
         e.preventDefault();
         if (numCourses < maxCourses) {
@@ -84,7 +94,15 @@ $(document).ready(function() {
             $(this).next(".max-reached").remove();
             $(this).after("<p class='max-reached'>Maximum of 8 courses.</p>");
         }
+    });
 
+    //////////////////////////
+    //   Removing Courses   //
+    //////////////////////////
+    $('body').on('click', '.btn-delete-course', function(e) {
+        e.preventDefault();
+        $(this).parents('.input-wrapper').remove();
+        numCourses--;
     });
 
     //////////////////////////
