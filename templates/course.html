@@ -1,0 +1,19 @@
+  <label class="course-count"></label>
+  <div class="course-info">
+    <!-- number of sections -->
+    <input type="hidden" value="1" class="num-sections" name="sec-indicator">
+    <div id="department" class="form-group">
+      <label for="department">Department</label>
+      <input type="text" class="form-control department" name="department" size="15" placeholder="ENGL"/>
+    </div>
+    <div id="course-num" class="form-group">
+      <label for="course-num">Course Number</label>
+      <input type="text" class="form-control course-num" name="courseNum" size="5" placeholder="101"/>
+    </div>
+  </div><br>
+  <div class="sec-info">
+      {% block section %}
+        {% include 'section.html' %}
+      {% endblock %}
+  </div>
+  <button class="btn btn-default btn-add-sec" type="button">Add More Sections</button>

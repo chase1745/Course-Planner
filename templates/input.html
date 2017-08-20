@@ -3,75 +3,17 @@
 
 <!-- Course Template -->
 <div id="course-template" class="input-wrapper" style="display: none">
-  <label class="course-count"></label>
-  <div class="course-info">
-    <!-- number of sections -->
-    <input type="hidden" value="1" class="num-sections" name="sec-indicator">
-    <div id="department" class="form-group">
-      <label for="department">Department</label>
-      <input type="text" class="form-control department" name="department" size="15" placeholder="ENGL"/>
-    </div>
-    <div id="course-num" class="form-group">
-      <label for="course-num">Course Number</label>
-      <input type="text" class="form-control course-num" name="courseNum" size="5" placeholder="101"/>
-    </div>
-  </div><br>
-  <div class="sec-info">
-    <div class="form-group">
-      <label for="secNum">Section Number</label>
-      <input type="text" class="form-control sec-num" name="secNum" size="5" placeholder="199"/>
-    </div>
-    <div class="form-group">
-      <label for="startTime">Start</label>
-      <input type="text" class="form-control start-time ui-timepicker-input" size="8" name="startTime" placeholder="1:30pm"/>
-    </div>
-    <div class="form-group">
-      <label for="finishTime">End</label>
-      <input type="text" class="form-control finish-time ui-timepicker-input" size="8" name="finishTime" placeholder="2:30pm"/>
-    </div>
-    <div class="form-group">
-      <input type="checkbox" class="form-control monday" name="m" value="M">
-      <label>M</label>
-      <input type="checkbox" class="form-control tuesday" name="t" value="T">
-      <label>T</label>
-      <input type="checkbox" class="form-control wednesday" name="w" value="W">
-      <label>W</label>
-      <input type="checkbox" class="form-control thursday" name="r" value="R">
-      <label>R</label>
-      <input type="checkbox" class="form-control friday" name="f" value="F">
-      <label>F</label>
-    </div>
-  </div>
-  <button class="btn btn-default btn-add-sec" type="button">Add More Sections</button>
+  {% block course %}
+    {% include 'course.html' %}
+  {% endblock %}
 </div>
 <!-- /Course Template -->
 
 <!-- Section Template -->
 <div class="sec-info" id="sec-template" style="display: none">
-  <div class="form-group">
-    <label for="secNum">Section Number</label>
-    <input type="text" class="form-control sec-num" name="secNum" size="5" placeholder="199"/>
-  </div>
-  <div class="form-group">
-    <label for="startTime">Start</label>
-    <input type="text" class="form-control start-time ui-timepicker-input" size="8" name="startTime" placeholder="1:30pm"/>
-  </div>
-  <div class="form-group">
-    <label for="finishTime">End</label>
-    <input type="text" class="form-control finish-time ui-timepicker-input" size="8" name="finishTime" placeholder="2:30pm"/>
-  </div>
-  <div class="form-group">
-    <input type="checkbox" class="form-control monday" name="m" value="M">
-    <label>M</label>
-    <input type="checkbox" class="form-control tuesday" name="t" value="T">
-    <label>T</label>
-    <input type="checkbox" class="form-control wednesday" name="w" value="W">
-    <label>W</label>
-    <input type="checkbox" class="form-control thursday" name="r" value="R">
-    <label>R</label>
-    <input type="checkbox" class="form-control friday" name="f" value="F">
-    <label>F</label>
-  </div>
+  {% block section %}
+    {% include 'section.html' %}
+  {% endblock %}
 </div>
 <!-- /Section Template -->
 
@@ -83,7 +25,7 @@
         <label class="course-count">Class {{ i+1 }}:</label>
         <div class="course-info">
           <!-- number of sections -->
-          <input type="hidden" value="1" id="{{ i }}"" class="num-sections" name="sec-indicator">
+          <input type="hidden" value="1" id="{{ i }}" class="num-sections" name="sec-indicator">
           <div id="department" class="form-group">
             <label for="department">Department</label>
             <input type="text" class="form-control department" name="department" size="15" placeholder="ENGL"/>
