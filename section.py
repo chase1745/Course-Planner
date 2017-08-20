@@ -63,7 +63,7 @@ class Section(Course):
     def interfere(self, other):
         sameDay = False
         for day in self.days.keys():
-            if self.days[day] == other.days[day]:
+            if self.days[day] and other.days[day]:
                 sameDay = True
 
         if sameDay:
