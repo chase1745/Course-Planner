@@ -1,30 +1,5 @@
 $(document).ready(function() {
-    var timeStart = $(".start-time");    
-    var timeFinish = $(".finish-time");
-
-    //////////////////////////
-    //   Timepicker funcs.  //
-    //////////////////////////
-
-    timeStart.each( function(){
-        $(this).timepicker({
-            'minTime': '7:00am',
-            'maxTime': '10:00pm',
-            'timeFormat': 'g:ia',
-            'step': 15
-        });
-    });
-    timeFinish.each( function(){
-        $(this).timepicker({
-            'minTime': '8:00am',
-            'maxTime': '11:00pm',
-            'timeFormat': 'g:ia',
-            'step': 15
-        });
-    });
-    $(".input-wrapper").on('change', ".start-time", function() {
-        $(".finish-time").timepicker('option', 'minTime', $(this).val());
-    });
+    newTimepicker();
 
     //////////////////////////
     //  Parsing checkboxes  //
@@ -62,6 +37,7 @@ $(document).ready(function() {
             $(this).next(".max-reached").remove();
             $(this).after("<p class='max-reached'>Maximum of 8 sections per course.</p>");
         }
+        newTimepicker();
     });
 
     //////////////////////////
@@ -74,7 +50,7 @@ $(document).ready(function() {
         $(this).parent().siblings(".course-info").find(".num-sections").val(num_sections);
         $(this).parents('.sec-info').remove();
     });
-    
+
     //////////////////////////
     //    Adding Courses    //
     //////////////////////////
@@ -94,6 +70,7 @@ $(document).ready(function() {
             $(this).next(".max-reached").remove();
             $(this).after("<p class='max-reached'>Maximum of 8 courses.</p>");
         }
+        newTimepicker();
     });
 
     //////////////////////////
@@ -112,6 +89,32 @@ $(document).ready(function() {
         $('.arrow_box').each( function() {$(this).removeClass('selected');});
         $(this).children().addClass('selected');
     });
-
-
 });
+
+//////////////////////////
+//   Timepicker funcs.  //
+//////////////////////////
+function newTimepicker() {
+    var timeStart = $(".start-time");
+    var timeFinish = $(".finish-time");
+
+    timeStart.each(function () {
+        $(this).timepicker({
+            'minTime': '7:00am',
+            'maxTime': '10:00pm',
+            'timeFormat': 'g:ia',
+            'step': 15
+        });
+    });
+    timeFinish.each(function () {
+        $(this).timepicker({
+            'minTime': '8:00am',
+            'maxTime': '11:00pm',
+            'timeFormat': 'g:ia',
+            'step': 15
+        });
+    });
+    $(".input-wrapper").on('change', ".start-time", function () {
+        $(".finish-time").timepicker('option', 'minTime', $(this).val());
+    });
+}
