@@ -86,7 +86,7 @@ def output():
     coursesToDelete = []
     i = 0
     for s in secs:
-        print(s)
+        # print(s)
         if s == '0': coursesToDelete.append(i)
         i += 1
     for c in reversed(coursesToDelete):
@@ -173,7 +173,7 @@ def generate_schedules(section_list):
                 break
             for sec2 in schedule:
                 if sec is not sec2 and sec.interfere(sec2):
-                    print(sec, sec2, 'INTERFERE')
+                    # print(sec, sec2, 'INTERFERE')
                     schedulePossible = False
         if schedulePossible:
             scheduleList.append(schedule)
