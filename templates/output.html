@@ -10,26 +10,47 @@
 
 {#<p>Number of schedules: {{ scheduleList|length }}</p>#}
 
+{#{% for schedule in scheduleList %}#}
+{#    <div class="row">#}
+{#    <a href="#" class="box">#}
+{#        {% if loop.index == 1 %}#}
+{#            <div class="arrow_box selected">#}
+{#        {% else %}#}
+{#            <div class="arrow_box">#}
+{#        {% endif %}#}
+{#                <h1>{{loop.index}}</h1>#}
+{#            </div>#}
+{#    </a>#}
+{#    {% if loop.index == 1 %}#}
+{#        <div class="schedule">#}
+{#    {% else %}#}
+{#        <div style="display: none" class="schedule">#}
+{#    {% endif %}#}
+{#            {% for section in schedule %}#}
+{#                <p>{{ section }}</p>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#{% endfor %}#}
+
+
+
+
+
+<div class="tab-sidebar">
 {% for schedule in scheduleList %}
-    <div class="row">
-    <a href="#" class="box">
-        {% if loop.index == 1 %}
-            <div class="arrow_box selected">
-        {% else %}
-            <div class="arrow_box">
-        {% endif %}
-                <h1>{{loop.index}}</h1>
-            </div>
-    </a>
-    {% if loop.index == 1 %}
-        <div class="schedule">
-    {% else %}
-        <div style="display: none" class="schedule">
-    {% endif %}
-            {% for section in schedule %}
-                <p>{{ section }}</p>
-            {% endfor %}
-        </div>
+    <div class="tab">
+        <a href="#" id="{{ loop.index }}">{{ loop.index }}</a>
+    </div>
+{% endfor %}
+</div>
+
+
+{% for schedule in scheduleList %}
+    <div class="schedule" id="s-{{ loop.index }}" style="display: none">
+        {% for section in schedule %}
+            {{ section }}
+        {% endfor %}
     </div>
 {% endfor %}
 
