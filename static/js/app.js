@@ -85,16 +85,18 @@ $(document).ready(function() {
     //////////////////////////
     //         OUTPUT       //
     //////////////////////////
-    $('.tab').click(function() {
-        $('.tab').each( function() {
-            // if ($(this).hasClass('selected')) {
-            //     $(this).parent().next().hide();
-            // }
-            $(this).removeClass('selected');
-        });
-        $(this).addClass('selected');
-        // $(this).next().show();
+    var tabs = $('.tab');
+    var sections = $('.sections');
+    // Make first schedule selected
+    tabs.eq(0).addClass('selected');
+    sections.eq(0).show();
 
+    tabs.click(function() {
+        $(this).siblings().removeClass('selected');
+        $(this).addClass('selected');
+        var index = $(this).index();
+        sections.each( function() { $(this).hide(); });
+        sections.eq(index).show();
     });
 });
 
