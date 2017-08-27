@@ -137,6 +137,7 @@
     display: block;
     transition: 0.3s;
     font-family: 'Open Sans', sans-serif;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
 }
 
 .selected {
