@@ -132,7 +132,7 @@ def output():
 
     # Prep data for user output
     # Each schedule in outputScheduleList is a dict with keys: M,T,W,R,F
-    #   with values holding the section information
+    #   with values holding the section information.
     outputScheduleList = []
     for schedule in scheduleList:
         s = defaultdict(list)
@@ -145,8 +145,7 @@ def output():
         for section in list(schedule):
             for day, value in section.days.items():
                 if value:
-                    s[day].append(section.secInfo)
-                    print(s)
+                    s[day].append(section.outputInfo)
         outputScheduleList.append(s)
 
     return render_template('output.html', scheduleList=outputScheduleList)
