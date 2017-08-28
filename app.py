@@ -120,23 +120,34 @@ def output():
         for sec in l:
             print(sec.secInfo)
     scheduleList = generate_schedules(section_list)
-    print("NUMBER OF SCHEDULES:", len(scheduleList))
+    # print("NUMBER OF SCHEDULES:", len(scheduleList))
 
     # Print schedules
-    i = 1
-    for schedule in scheduleList:
-        print("Schedule" + str(i) + ":")
-        i += 1
-        for section in list(schedule):
-            print(section.secInfo)
+    # i = 1
+    # for schedule in scheduleList:
+    #     print("Schedule" + str(i) + ":")
+    #     i += 1
+    #     for section in list(schedule):
+    #         print(section.secInfo)
 
     # Prep data for user output
+    # Each schedule in outputScheduleList is a dict with keys: M,T,W,R,F
+    #   with values holding the section information
     outputScheduleList = []
     for schedule in scheduleList:
-        sections = []
+        s = defaultdict(list)
+        s['M'] = []
+        s['T'] = []
+        s['W'] = []
+        s['R'] = []
+        s['F'] = []
+
         for section in list(schedule):
-            sections.append(section.secInfo)
-        outputScheduleList.append(sections)
+            for day, value in section.days.items():
+                if value:
+                    s[day].append(section.secInfo)
+                    print(s)
+        outputScheduleList.append(s)
 
     return render_template('output.html', scheduleList=outputScheduleList)
 

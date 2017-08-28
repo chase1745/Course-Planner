@@ -17,9 +17,26 @@
 
 {% for schedule in scheduleList %}
     <div class="sections" id="section-{{ loop.index }}">
-        {% for section in schedule %}
-            {{ section }}<br>
-        {% endfor %}
+        <p>Monday:
+        {% for day in schedule['M'] %}
+            {{ day }}
+        {% endfor %}</p>
+        <p>Tuesday:
+        {% for day in schedule['T'] %}
+            {{ day }}
+        {% endfor %}</p>
+        <p>Wednesday:
+        {% for day in schedule['W'] %}
+            {{ day }}
+        {% endfor %}</p>
+        <p>Thursday:
+        {% for day in schedule['R'] %}
+            {{ day }}
+        {% endfor %}</p>
+        <p>Friday:
+        {% for day in schedule['F'] %}
+            {{ day }}
+        {% endfor %}</p>
     </div>
 {% endfor %}
 {% endblock %}
