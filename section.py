@@ -1,4 +1,4 @@
-from datetime import time
+from datetime import datetime, date, time
 from collections import OrderedDict
 from course import Course
 import re
@@ -37,6 +37,15 @@ class Section(Course):
             self.morning = True
 
         self.secInfo = self.name + " - " + self.strDays + " " + self.timeStart.__str__() + "-" + self.timeFinish.__str__() + " " + self.AMorPM
+        self.outputInfo = {
+            'course': self.department + ' ' + self.courseNum,
+            'section': self.number,
+            'timeStart': timeStart,
+            'timeFinish': timeFinish,
+            'size': ((datetime.combine(date.today(), self.timeFinish) - datetime.combine(date.today(), self.timeStart)).total_seconds()) / 50,
+            'topMargin': abs(((datetime.combine(date.today(), self.timeStart) - datetime.combine(date.today(), time(6,30))).total_seconds()) / 100)
+        }
+
 
     def __str__(self):
         return self.name
@@ -80,3 +89,7 @@ class Section(Course):
         else:
             # print(self.secInfo, '=', other.secInfo)
             return False
+
+    # def get_pretty_time(self, time):
+
+
