@@ -23,31 +23,31 @@ $(document).ready(function() {
     });    
 
     //////////////////////////
-    //    Adding Sections   //
+    //    Adding schedule   //
     //////////////////////////
-    var maxSections = 8;
+    var maxschedule = 8;
     $('body').on('click', '.btn-add-sec', function(e) {
         e.preventDefault();
-        var num_sections = parseInt($(this).prevAll(".course-info").find(".num-sections").val());
-        num_sections++;
-        if (num_sections <= maxSections) {
+        var num_schedule = parseInt($(this).prevAll(".course-info").find(".num-schedule").val());
+        num_schedule++;
+        if (num_schedule <= maxschedule) {
             $("#sec-template").clone().insertBefore($(this)).removeAttr('id').show();
-            $(this).prevAll(".course-info").find(".num-sections").val(num_sections);
+            $(this).prevAll(".course-info").find(".num-schedule").val(num_schedule);
         } else {
             $(this).next(".max-reached").remove();
-            $(this).after("<p class='max-reached'>Maximum of 8 sections per course.</p>");
+            $(this).after("<p class='max-reached'>Maximum of 8 schedule per course.</p>");
         }
         newTimepicker();
     });
 
     //////////////////////////
-    //   Removing Sections  //
+    //   Removing schedule  //
     //////////////////////////
     $('body').on('click', '.btn-delete-sec', function(e) {
         e.preventDefault();
-        var num_sections = parseInt($(this).parent().siblings(".course-info").find(".num-sections").val());
-        num_sections--;
-        $(this).parent().siblings(".course-info").find(".num-sections").val(num_sections);
+        var num_schedule = parseInt($(this).parent().siblings(".course-info").find(".num-schedule").val());
+        num_schedule--;
+        $(this).parent().siblings(".course-info").find(".num-schedule").val(num_schedule);
         $(this).parents('.sec-info').remove();
     });
 
@@ -86,17 +86,17 @@ $(document).ready(function() {
     //         OUTPUT       //
     //////////////////////////
     var tabs = $('.tab');
-    var sections = $('.sections');
+    var schedule = $('.schedule');
     // Make first schedule selected
     tabs.eq(0).addClass('selected');
-    sections.eq(0).show();
+    schedule.eq(0).css('display', 'table');
 
     tabs.click(function() {
         $(this).siblings().removeClass('selected');
         $(this).addClass('selected');
         var index = $(this).index();
-        sections.each( function() { $(this).hide(); });
-        sections.eq(index).show();
+        schedule.each( function() { $(this).css('display', 'none'); });
+        schedule.eq(index).css('display', 'table');
     });
 });
 

@@ -15,28 +15,82 @@
 {% endfor %}
 </div>
 
+{#{% for schedule in scheduleList %}#}
+{#    <div class="sections" id="section-{{ loop.index }}">#}
+{#        <p>Monday:#}
+{#        {% for section in schedule.M %}#}
+{#            {{ section.course }}#}
+{#            {{ section.timeStart }} - {{ section.timeFinish }}#}
+{#            {{ section.topMargin }}px<br>#}
+{#        {% endfor px%}</p>#}
+{#        <p>Tuesday:#}
+{#        {% for section in schedule.T %}#}
+{#            {{ section.course }}#}
+{#            {{ section.timeStart }} - {{ section.timeFinish }}#}
+{#            {{ section.topMargin }}px<br>#}
+{#        {% endfor px%}</p>#}
+{#        <p>Wednesday:#}
+{#        {% for section in schedule.W %}#}
+{#            {{ section.course }}#}
+{#            {{ section.timeStart }} - {{ section.timeFinish }}#}
+{#            {{ section.topMargin }}px<br>#}
+{#        {% endfor px%}</p>#}
+{#        <p>Thursday:#}
+{#        {% for section in schedule.R %}#}
+{#            {{ section.course }}#}
+{#            {{ section.timeStart }} - {{ section.timeFinish }}#}
+{#            {{ section.topMargin }}px<br>#}
+{#        {% endfor px%}</p>#}
+{#        <p>Friday:#}
+{#        {% for section in schedule.F %}#}
+{#            {{ section.course }}#}
+{#            {{ section.timeStart }} - {{ section.timeFinish }}#}
+{#            {{ section.topMargin }}px<br>#}
+{#        {% endfor px%}</p>#}
+{#    </div>#}
+{#{% endfor %}#}
 {% for schedule in scheduleList %}
-    <div class="sections" id="section-{{ loop.index }}">
-        <p>Monday:
-        {% for section in schedule.M %}
-            {{ section.course }}
-        {% endfor %}</p>
-        <p>Tuesday:
-        {% for section in schedule.T %}
-            {{ section.course }}
-        {% endfor %}</p>
-        <p>Wednesday:
-        {% for section in schedule.W %}
-            {{ section.course }}
-        {% endfor %}</p>
-        <p>Thursday:
-        {% for section in schedule.R %}
-            {{ section.course }}
-        {% endfor %}</p>
-        <p>Friday:
-        {% for section in schedule.F %}
-            {{ section.course }}
-        {% endfor %}</p>
+    <div class="container-fluid well schedule">
+        <div class="day" id="M">
+            <div class="day-text hvr-bob">Monday</div>
+            {% for section in schedule.M %}
+                <div class="section" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <p class="course">{{ section.course }} - {{ section.section }}</p>
+                </div>
+            {% endfor %}
+        </div
+        ><div class="day" id="T">
+            <div class="day-text hvr-bob">Tuesday</div>
+            {% for section in schedule.T %}
+                <div class="section" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <p class="course">{{ section.course }} - {{ section.section }}</p>
+                </div>
+            {% endfor %}
+        </div
+        ><div class="day" id="W">
+            <div class="day-text hvr-bob">Wednesday</div>
+            {% for section in schedule.W %}
+                <div class="section" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <p class="course">{{ section.course }} - {{ section.section }}</p>
+                </div>
+            {% endfor %}
+        </div
+        ><div class="day" id="R">
+            <div class="day-text hvr-bob">Thursday</div>
+            {% for section in schedule.R %}
+                <div class="section" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <p class="course">{{ section.course }} - {{ section.section }}</p>
+                </div>
+            {% endfor %}
+        </div
+        ><div class="day" id="F">
+            <div class="day-text hvr-bob">Friday</div>
+            {% for section in schedule.F %}
+                <div class="section" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <p class="course">{{ section.course }} - {{ section.section }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endfor %}
 {% endblock %}
