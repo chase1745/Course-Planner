@@ -9,7 +9,6 @@ from itertools import product
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
 @app.route('/')
 def input():
     return render_template('input.html')
