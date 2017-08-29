@@ -23,31 +23,31 @@ $(document).ready(function() {
     });    
 
     //////////////////////////
-    //    Adding schedule   //
+    //    Adding Sections   //
     //////////////////////////
-    var maxschedule = 8;
+    var maxSections = 8;
     $('body').on('click', '.btn-add-sec', function(e) {
         e.preventDefault();
-        var num_schedule = parseInt($(this).prevAll(".course-info").find(".num-schedule").val());
-        num_schedule++;
-        if (num_schedule <= maxschedule) {
+        var num_sections = parseInt($(this).prevAll(".course-info").find(".num-sections").val());
+        num_sections++;
+        if (num_sections <= maxSections) {
             $("#sec-template").clone().insertBefore($(this)).removeAttr('id').show();
-            $(this).prevAll(".course-info").find(".num-schedule").val(num_schedule);
+            $(this).prevAll(".course-info").find(".num-sections").val(num_sections);
         } else {
             $(this).next(".max-reached").remove();
-            $(this).after("<p class='max-reached'>Maximum of 8 schedule per course.</p>");
+            $(this).after("<p class='max-reached'>Maximum of 8 sections per course.</p>");
         }
         newTimepicker();
     });
 
     //////////////////////////
-    //   Removing schedule  //
+    //   Removing Sections  //
     //////////////////////////
     $('body').on('click', '.btn-delete-sec', function(e) {
         e.preventDefault();
-        var num_schedule = parseInt($(this).parent().siblings(".course-info").find(".num-schedule").val());
-        num_schedule--;
-        $(this).parent().siblings(".course-info").find(".num-schedule").val(num_schedule);
+        var num_sections = parseInt($(this).parent().siblings(".course-info").find(".num-sections").val());
+        num_sections--;
+        $(this).parent().siblings(".course-info").find(".num-sections").val(num_sections);
         $(this).parents('.sec-info').remove();
     });
 
