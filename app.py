@@ -118,7 +118,7 @@ def output():
     section_list = [courses.getSections() for courses in course_list]
     for l in section_list:
         for sec in l:
-            print(sec.secInfo)
+            print(sec.secInfo, sec.outputInfo['size'], sec.outputInfo['topMargin'])
     scheduleList = generate_schedules(section_list)
     # print("NUMBER OF SCHEDULES:", len(scheduleList))
 
