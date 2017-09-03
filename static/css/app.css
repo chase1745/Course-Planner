@@ -190,7 +190,7 @@
 }
 
 .card {
-    background: #2ecc71;
+    /*background: #2ecc71;*/
     /*border-radius: 2px;*/
     border: 2px solid #485F6E;
     display: inline-block;
@@ -205,7 +205,7 @@
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
-.well {
+.well.schedule {
     height: 800px;
 }
 

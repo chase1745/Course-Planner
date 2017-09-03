@@ -20,7 +20,7 @@
         <div class="day" id="M">
             <div class="day-text hvr-bob">Monday</div>
             {% for section in schedule.M %}
-                    <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="top: {{ section.topMargin }}px; height: {{ section.size }}px; background: {{ section.color }};">
                         <p class="course">{{ section.course }} - {{ section.section }}</p>
                         <p>{{ section.timeStart }} - {{ section.timeFinish }}</p>
                     </div>
@@ -29,7 +29,7 @@
         ><div class="day" id="T">
             <div class="day-text hvr-bob">Tuesday</div>
             {% for section in schedule.T %}
-                    <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                    <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px; background: {{ section.color }}">
                         <p class="course">{{ section.course }} - {{ section.section }}</p>
                         <p>{{ section.timeStart }} - {{ section.timeFinish }}</p>
                     </div>
@@ -38,7 +38,7 @@
         ><div class="day" id="W">
             <div class="day-text hvr-bob">Wednesday</div>
             {% for section in schedule.W %}
-                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;  background: {{ section.color }};">
                     <p class="course">{{ section.course }} - {{ section.section }}</p>
                     <p>{{ section.timeStart }} - {{ section.timeFinish }}</p>
                 </div>
@@ -47,7 +47,7 @@
         ><div class="day" id="R">
             <div class="day-text hvr-bob">Thursday</div>
             {% for section in schedule.R %}
-                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px; background: {{ section.color }};">
                     <p class="course">{{ section.course }} - {{ section.section }}</p>
                     <p>{{ section.timeStart }} - {{ section.timeFinish }}</p>
                 </div>
@@ -56,7 +56,7 @@
         ><div class="day" id="F">
             <div class="day-text hvr-bob">Friday</div>
             {% for section in schedule.F %}
-                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px;">
+                <div class="section card card-5" id="{{ section.course }} {{ section.section }}" style="margin-top: {{ section.topMargin }}px;height: {{ section.size }}px; background: {{ section.color }};">
                     <p class="course">{{ section.course }} - {{ section.section }}</p>
                     <p>{{ section.timeStart }} - {{ section.timeFinish }}</p>
                 </div>

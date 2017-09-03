@@ -2,6 +2,7 @@ from datetime import datetime, date, time, timedelta
 from collections import OrderedDict
 from course import Course
 import re
+import random
 
 
 class Section(Course): 
@@ -47,9 +48,9 @@ class Section(Course):
             'timeStart': timeStart,
             'timeFinish': timeFinish,
             'size': ((datetime.combine(date.today(), self.timeFinish) - datetime.combine(date.today(), self.timeStart)).total_seconds()) / 50 + 50,
-            'topMargin': abs(((outputTimeStart - datetime.combine(date.today(), time(6,30))).total_seconds()) / 100)
+            'topMargin': abs(((outputTimeStart - datetime.combine(date.today(), time(6,30))).total_seconds()) / 100),
+            'color': random.choice(colors)
         }
-
 
     def __str__(self):
         return self.name
@@ -94,6 +95,6 @@ class Section(Course):
             # print(self.secInfo, '=', other.secInfo)
             return False
 
-    # def get_pretty_time(self, time):
+colors = ['#e74c3c', '#2ecc71', '#9b59b6', '#f39c12', '#3498db', '#34495e', '#F47983', '#7A942E', '#757D75', '#E29C45', '#006442']
 
 
