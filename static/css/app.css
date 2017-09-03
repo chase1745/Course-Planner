@@ -174,7 +174,7 @@
 .day-text {
     font-family: 'Open Sans', sans-serif;
     font-size: 25px;
-    height: 10%;
+    /*height: 10%;*/
     color: #ddf8c6;
     padding: 10px;
     border-bottom: 2px solid #ddf8c6;
@@ -189,11 +189,25 @@
     border-right: 2px solid #ddf8c6;
 }
 
-.section {
-    padding: 10px;
-    background-color: #3D81B8;
+.card {
+    background: #2ecc71;
+    /*border-radius: 2px;*/
+    border: 2px solid #485F6E;
+    display: inline-block;
+    height: 150px;
+    /*margin: 1rem;*/
+    position: relative;
+    width: 98%;
+    color: #E8EFF0;
 }
 
+.card-5 {
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.well {
+    height: 800px;
+}
 
 
 
