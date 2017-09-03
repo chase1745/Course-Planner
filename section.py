@@ -1,4 +1,4 @@
-from datetime import datetime, date, time
+from datetime import datetime, date, time, timedelta
 from collections import OrderedDict
 from course import Course
 import re
@@ -37,13 +37,17 @@ class Section(Course):
             self.morning = True
 
         self.secInfo = self.name + " - " + self.strDays + " " + self.timeStart.__str__() + "-" + self.timeFinish.__str__() + " " + self.AMorPM
+        if not self.morning:
+            outputTimeStart = datetime.combine(date.today(), self.timeStart) + timedelta(hours=12)
+        else:
+            outputTimeStart = datetime.combine(date.today(), self.timeStart)
         self.outputInfo = {
             'course': self.department + ' ' + self.courseNum,
             'section': self.number,
             'timeStart': timeStart,
             'timeFinish': timeFinish,
-            'size': ((datetime.combine(date.today(), self.timeFinish) - datetime.combine(date.today(), self.timeStart)).total_seconds()) / 50,
-            'topMargin': abs(((datetime.combine(date.today(), self.timeStart) - datetime.combine(date.today(), time(6,30))).total_seconds()) / 100)
+            'size': ((datetime.combine(date.today(), self.timeFinish) - datetime.combine(date.today(), self.timeStart)).total_seconds()) / 50 + 50,
+            'topMargin': abs(((outputTimeStart - datetime.combine(date.today(), time(6,30))).total_seconds()) / 100)
         }
 
 
