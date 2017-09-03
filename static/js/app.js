@@ -98,6 +98,37 @@ $(document).ready(function() {
         schedule.each( function() { $(this).css('display', 'none'); });
         schedule.eq(index).css('display', 'table');
     });
+
+    // Fix margins
+    var mondays = $('#M');
+    var tuesdays = $('#T');
+    var wednesdays = $('#W');
+    var thursdays = $('#R');
+    var fridays = $('#F');
+    var days = [mondays, tuesdays, wednesdays, thursdays, fridays];
+    var total = 0;
+    for (var i=0; i < days.length; i++) {
+        var lastmargin = 0;
+        var lastheight = 0;
+        var localTotal = 0;
+        days[i].children('.section').each(function() {
+            if (parseInt($(this).css('top')) < lastheight+lastmargin) {
+                var newmargin = $(this).css('top') + lastmargin;
+                $(this).css({'top':newmargin+'px'});
+                lastmargin = parseInt($(this).css('top'));
+                lastheight = parseInt($(this).css('height'));
+                localTotal += lastmargin + lastheight;
+            } else {
+                lastmargin = parseInt($(this).css('top'));
+                lastheight = parseInt($(this).css('height'));
+                localTotal += lastmargin + lastheight;
+            }
+        });
+        if(localTotal > 800) {
+            total = localTotal;
+            $('.well').height(total);
+        }
+    }
 });
 
 //////////////////////////
