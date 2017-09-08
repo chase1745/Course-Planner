@@ -191,7 +191,7 @@ def generate_schedules(section_list):
     return scheduleList
 
 
-app.run(debug=True)
+# app.run(debug=True)
 
 
 
